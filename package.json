@@ -1,0 +1,27 @@
+{
+  "name": "projectmanagement",
+  "version": "1.0.0",
+  "description": "a project management system",
+  "keywords": [
+    "backend"
+  ],
+  "homepage": "https://github.com/sanskardagade/BACKEND#readme",
+  "bugs": {
+    "url": "https://github.com/sanskardagade/BACKEND/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanskardagade/BACKEND.git"
+  },
+  "license": "ISC",
+  "author": "sanskar dagade",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "node index.js"
+  }
+}
+
+
+
