@@ -1,5 +1,5 @@
-## In package.json 
+## In package.json
 
-type are of two types 
-// require - common js 
-// import - module js 
+type are of two types
+// require - common js
+// import - module js
