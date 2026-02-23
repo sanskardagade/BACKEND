@@ -1,5 +1,44 @@
 import Mailgen from "mailgen";
+import nodemailer from "nodemailer";
 
+const sendMail = async (options) =>{
+    const mailGenerator = new Mailgen({
+        theme:"default",
+        product:{
+            name:"Task Manager",
+            link:"https://taskmanagerlink"
+        }
+    })
+
+    const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent)
+    const emailHtml = mailGenerator.generate(options.mailgenContent)
+
+    const transporter = nodemailer.createTransport({
+        host: process.env.MAILTRAP_SMTP_HOST,
+        post: processs.env.MAILTRAP_SMTP_POST,  
+        auth:{
+            user: process.env.MAILTRAP_SMTP_USER,
+            password: process.env.MAILTRAP_SMTP_PASSWORD
+        }
+    })
+
+
+
+    const mail = {
+        from: "mail.taskmanager@example.com",
+        to: options.email,
+        subject: options.subject,
+        text: emailTextual,
+        html: emailHtml
+    }
+
+    try {
+        await transporter.sendMail(mail)
+    } catch (error) {
+        console.error("email service failed make sure your credentials are correct")
+        console.error("Error:",error)
+    }
+}
 
 const emailVerificationMailgenContent = (username,verificationUrl) => {
     return{
@@ -20,9 +59,7 @@ const emailVerificationMailgenContent = (username,verificationUrl) => {
 };
 
 
-
-
-const forgotPasswordMailgenCpntent = (username,passwordResetUrl) => {
+const forgotPasswordMailgenContent = (username,passwordResetUrl) => {
     return{
         body: {
             name: username,
@@ -43,5 +80,6 @@ const forgotPasswordMailgenCpntent = (username,passwordResetUrl) => {
 
 export{
     emailVerificationMailgenContent,
-    forgotPasswordMailgenCpntent
+    forgotPasswordMailgenContent,
+    sendMail
 }
