@@ -1,7 +1,7 @@
 import Mailgen from "mailgen";
 import nodemailer from "nodemailer";
 
-const sendMail = async (options) =>{
+const sendEmail = async (options) =>{
     const mailGenerator = new Mailgen({
         theme:"default",
         product:{
@@ -15,7 +15,9 @@ const sendMail = async (options) =>{
 
     const transporter = nodemailer.createTransport({
         host: process.env.MAILTRAP_SMTP_HOST,
-        post: processs.env.MAILTRAP_SMTP_POST,  
+        post: process
+        
+        .env.MAILTRAP_SMTP_POST,  
         auth:{
             user: process.env.MAILTRAP_SMTP_USER,
             password: process.env.MAILTRAP_SMTP_PASSWORD
@@ -33,7 +35,7 @@ const sendMail = async (options) =>{
     }
 
     try {
-        await transporter.sendMail(mail)
+        await transporter.sendEmail(mail)
     } catch (error) {
         console.error("email service failed make sure your credentials are correct")
         console.error("Error:",error)
@@ -81,5 +83,5 @@ const forgotPasswordMailgenContent = (username,passwordResetUrl) => {
 export{
     emailVerificationMailgenContent,
     forgotPasswordMailgenContent,
-    sendMail
+    sendEmail
 }
