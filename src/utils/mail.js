@@ -13,14 +13,13 @@ const sendEmail = async (options) =>{
     const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent)
     const emailHtml = mailGenerator.generate(options.mailgenContent)
 
+    
     const transporter = nodemailer.createTransport({
         host: process.env.MAILTRAP_SMTP_HOST,
-        post: process
-        
-        .env.MAILTRAP_SMTP_POST,  
-        auth:{
+        port: process.env.MAILTRAP_SMTP_PORT,
+        auth: {
             user: process.env.MAILTRAP_SMTP_USER,
-            password: process.env.MAILTRAP_SMTP_PASSWORD
+            pass: process.env.MAILTRAP_SMTP_PASS
         }
     })
 
@@ -35,7 +34,7 @@ const sendEmail = async (options) =>{
     }
 
     try {
-        await transporter.sendEmail(mail)
+        await transporter.sendMail(mail)
     } catch (error) {
         console.error("email service failed make sure your credentials are correct")
         console.error("Error:",error)
