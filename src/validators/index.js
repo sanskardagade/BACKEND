@@ -40,4 +40,6 @@ const userLoginValidator = () => {
             .withMessage("Password is required")
     ]
 }
+
+
 export {userRegisterValidator,userLoginValidator}
