@@ -41,9 +41,21 @@ const userLoginValidator = () => {
     ]
 }
 
+// const userChangeCurrentPasswordValidator = () =>{
+//     return[
+//         body("oldOassword")
+//             .notEmpty()
+//             .withMessage("Old Password is Required"),
+        
+//         body("newPassword")
+//             .notEmpty()
+//             .withMessage("New Password is Required"),
+//     ]
+// }
+
 const userChangeCurrentPasswordValidator = () =>{
     return[
-        body("oldOassword")
+        body("oldPassword")
             .notEmpty()
             .withMessage("Old Password is Required"),
         

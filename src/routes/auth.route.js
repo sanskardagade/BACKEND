@@ -20,6 +20,6 @@ router.route("/reset-password/:resetToken").post(userResetForgotPasswordValidato
 //secure routes
 router.route("/logout").post(verifyJWT,logoutUser);
 router.route("/current-user").post(verifyJWT,getCurrentUser)
-router.route("/change-password").post(userChangeCurrentPasswordValidator,validate,changeCurrentPassword)
+router.route("/change-password").post(verifyJWT,userChangeCurrentPasswordValidator(),validate,changeCurrentPassword)
 router.route("/resend-email-verification").post(verifyJWT,resendEmailVerification)
 export default router;
