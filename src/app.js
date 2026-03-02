@@ -22,9 +22,11 @@ app.use(cors({
 // import the routes
 import healthCheckRouter from "./routes/healthcheck.route.js"
 import authRouter from "./routes/auth.route.js"
+import projectRouter from "./routes/project.routes.js"
 
 app.use("/api/v1/healthcheck",healthCheckRouter)
 app.use("/api/v1/auth",authRouter)
+app.use("/api/v1/projects",projectRouter)
 
 
 
