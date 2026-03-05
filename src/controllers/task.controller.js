@@ -146,7 +146,7 @@ const updateSubTask = asyncHandler(async (req, res) => {
   //chai
 });
 const deleteSubTask = asyncHandler(async (req, res) => {
-  //chai
+  //completed
 });
 
 export {
